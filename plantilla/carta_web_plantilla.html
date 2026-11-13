@@ -11,11 +11,11 @@
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="Breaking Beer · Bar cultural">
 <meta property="og:title" content="Carta de Breaking Beer">
-<meta property="og:description" content="Cervezas envasadas, promos, hamburguesas, pachatas, pizzas y tragos. Música en vivo. San Juan.">
+<meta property="og:description" content="Rock nacional en vivo, cervezas envasadas bien frías, promos, hamburguesas, pachatas y pizzas. San Juan.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232c7048'/%3E%3Ctext x='16' y='24' font-size='19' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%23f6efdc'%3EBr%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
 /* ───────────── Tokens ───────────── */
 :root{
@@ -411,7 +411,64 @@ body.searching .fam{ display:block }
 .dlv{ flex:none; width:64px; height:64px; padding:0; border:0; background:none !important; box-shadow:none; overflow:visible }
 .dlv img{ width:100%; height:100%; object-fit:contain; border-radius:16px; filter:drop-shadow(0 8px 14px rgba(0,0,0,.45)) }
 .dlv.rap img{ transform:scale(1.16) }
-@media (hover:hover){ .dlv:hover{ filter:none; transform:translateY(-3px) } }</style>
+@media (hover:hover){ .dlv:hover{ filter:none; transform:translateY(-3px) } }/* ══════════ REDISEÑO · capa común ══════════ */
+.sec-h h2,.foot h2{ font-family:var(--title); font-weight:400 }
+.sec-h .rule{ width:min(250px,64%); height:7px; border-radius:0; background:none; border-top:2px solid var(--gold); border-bottom:1px solid var(--rule-2); margin-top:14px }
+.promo,.card,.beer,.banner,.ubanner,.bt{ border-radius:var(--r) }
+.btn,.chips a,.tabs button,.seg,.seg button,.seg .thumb,.sbar input,.note,.row,.card .plus{ border-radius:var(--r-s) }
+.chips a{ text-transform:uppercase }
+/* marco fino dentro de las tarjetas con foto, como una placa */
+.card::before,.promo:not(.feat)::before{ content:""; position:absolute; inset:8px; border:1px solid var(--plate); border-radius:calc(var(--r) - 4px); z-index:1; pointer-events:none }
+.p-top{ top:18px; left:18px; right:18px }
+.card .chip{ top:17px; left:17px }
+.p-body{ padding:0 20px 20px }
+.card .c-body{ padding:0 18px 18px }
+.card .plus{ right:17px; bottom:17px }
+/* línea de puntos desde el nombre hasta el precio, como en las cartas de imprenta */
+.row-n{ flex-wrap:nowrap; align-items:baseline }
+.row-n .nm{ min-width:0 }
+.row-n::after{ content:""; order:9; flex:1 1 14px; min-width:14px; border-bottom:2px dotted var(--leader); transform:translateY(-4px) }
+.row::after{ display:none }
+.row{ padding-block:13px }
+/* marco de la portada */
+.hero::before{ content:""; position:absolute; inset:12px 12px 62px; border:1px solid var(--plate); outline:1px solid var(--plate-2); outline-offset:4px; z-index:-1; pointer-events:none }
+.open-pill{ top:26px }
+/* ══════════ REDISEÑO · Breaking Beer, club de rock ══════════
+   Títulos de afiche de recital, rótulos a máquina de escribir como un setlist,
+   etiquetas de papel pegado y sello "Rock nacional en vivo". */
+:root{ --title:'Anton','Impact','Arial Narrow',sans-serif; --type:'Special Elite','Courier New',monospace;
+  --txt:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:6px; --r-s:4px; --rule-2:rgba(246,240,226,.45); --plate:rgba(246,240,226,.26); --plate-2:rgba(246,240,226,.12); --leader:rgba(246,240,226,.2); --paper-tag:#f1e7cf }
+.sec-h h2,.foot h2{ letter-spacing:.012em; line-height:.98; font-size:clamp(44px,12vw,68px) }
+.sec-h .rule{ border-top-width:3px }
+.promo h3,.card h3,.beer h3,.bt h3,.s-body h3,.sub-h,.fam,.ubanner b{ font-family:var(--title); font-weight:400; letter-spacing:.015em }
+.sec-sub,.ticker span,.ml,.banner span,.foot-note,.open-pill,.deliv p,.beer .meta,.meter span,.note{ font-family:var(--type) }
+.sec-sub{ font-size:.86rem } .ticker span{ letter-spacing:.1em; font-size:.84rem }
+.nm{ font-weight:600 }
+.chip{ font-family:var(--type); border-radius:2px; letter-spacing:.04em; font-size:.68rem; font-weight:400; background:var(--paper-tag); color:#14110e; padding:6px 8px 3px }
+.card .chip,.p-top .chip,.bt .chip{ transform:rotate(-2deg) }
+.chip.dark,.card .chip.dark,.promo .chip.dark{ background:rgba(20,17,14,.72); color:var(--paper-tag); border:1px solid rgba(241,231,207,.4) }
+.btn{ font-family:var(--title); font-weight:400; text-transform:uppercase; letter-spacing:.06em; font-size:1.02rem }
+.cta .btn{ font-size:.92rem; letter-spacing:.04em }
+.chips a,.tabs button,.seg button{ font-family:var(--type); text-transform:uppercase; letter-spacing:.04em; font-size:.8rem; font-weight:400 }
+/* sello en la portada */
+.stamp{ display:inline-block; margin-top:2px; padding:9px 16px 6px; transform:rotate(-7deg); color:var(--paper-tag); text-align:center;
+  font:400 1.18rem/1.05 var(--title); letter-spacing:.07em; text-transform:uppercase;
+  border:3px solid rgba(241,231,207,.86); border-radius:6px; box-shadow:inset 0 0 0 3px transparent, inset 0 0 0 4px rgba(241,231,207,.5);
+  animation:stampin .45s cubic-bezier(.2,1.4,.4,1) .7s both }
+@keyframes stampin{ from{ opacity:0; transform:rotate(-7deg) scale(1.9) } to{ opacity:1; transform:rotate(-7deg) scale(1) } }
+/* bloque "En vivo": afiche fotocopiado */
+.live{ position:relative; isolation:isolate; overflow:hidden; border-radius:var(--r); min-height:380px; display:flex; align-items:flex-end; box-shadow:inset 0 0 0 1px var(--line), 0 18px 40px -22px #000 }
+.live img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-3; filter:grayscale(1) contrast(1.1) brightness(1.25) }
+.live::before{ content:""; position:absolute; inset:0; z-index:-2; background-image:radial-gradient(rgba(0,0,0,.42) 1px,transparent 1.5px); background-size:4px 4px }
+.live::after{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(18,16,14,.05) 0,rgba(18,16,14,.5) 42%,rgba(18,16,14,.95) 100%) }
+.live-in{ padding:22px 20px 22px; display:grid; gap:12px; justify-items:start }
+.live-k{ font:400 .74rem/1 var(--type); letter-spacing:.04em; text-transform:uppercase; background:var(--paper-tag); color:#14110e; padding:7px 9px 4px; border-radius:2px; transform:rotate(-2deg) }
+.live b{ font:400 clamp(46px,13.5vw,84px)/.94 var(--title); letter-spacing:.012em; text-transform:uppercase; color:#f8f1df }
+.live b i{ font-style:normal; color:var(--gold-2) }
+.live p{ font:400 .88rem/1.5 var(--type); color:rgba(246,240,226,.86); max-width:44ch }
+@media (prefers-reduced-motion:reduce){ .stamp{ animation:none } }
+</style>
 </head>
 <body>
 <noscript><p style="padding:40px 20px;text-align:center">Para ver la carta de Breaking Beer activá JavaScript en tu navegador.</p></noscript>
@@ -427,6 +484,7 @@ body.searching .fam{ display:block }
       <div class="r"><b class="el"><i>4</i>Be</b><em>er</em></div>
     </div>
     <p class="hero-tag"><span>El maldito · Bar cultural</span><span class="sep"> · </span><span>La excusa perfecta</span></p>
+    <div class="stamp" aria-label="Rock nacional en vivo">Rock nacional<br>en vivo</div>
     <div class="hero-cta">
       <a class="btn gold" href="#envasadas" data-go>Cervezas envasadas</a>
       <a class="btn glass" href="#promos" data-go>Ver promos</a>
@@ -445,6 +503,7 @@ body.searching .fam{ display:block }
     <a href="#top" data-go aria-label="Volver arriba" class="bb-mini nav-logo"><b class="el"><i>35</i>Br</b><b class="el"><i>4</i>Be</b></a>
     <div class="chips" id="chips">
       <a href="#envasadas" data-go>Envasadas</a>
+      <a href="#envivo" data-go>En vivo</a>
       <a href="#promos" data-go>Promos</a>
       <a href="#destacados" data-go>Especialidades</a>
       <a href="#cervezas" data-go>Artesanales</a>
@@ -470,6 +529,20 @@ body.searching .fam{ display:block }
     <p class="sec-sub rv">El corazón de Breaking Beer: botellones bien helados, de la heladera directo a tu mesa. Tocá una para verla de cerca.</p>
     <div class="ubanner rv"><img src="img/heladera.jpg" alt="" loading="lazy" decoding="async" style="object-position:62% 50%"><b>Siempre bien frías<small>Elegí tu botellón y compartilo con la mesa.</small></b></div>
     <div class="bottles" id="bottles"></div>
+  </section>
+
+  <section class="sec" id="envivo">
+    <div class="sec-h rv"><h2>En vivo</h2><div class="rule"></div></div>
+    <p class="sec-sub rv">Bandas y rock nacional en el Escenario Lucho Flores.</p>
+    <div class="live rv">
+      <img src="img/escenario.jpg" alt="" loading="lazy" decoding="async" style="object-position:55% 40%">
+      <div class="live-in">
+        <span class="live-k">Escenario Lucho Flores</span>
+        <b>Rock nacional<br><i>en vivo</i></b>
+        <p>Acá se viene a escuchar bandas con una birra bien fría en la mano. Las fechas y las entradas las anunciamos en nuestro Instagram.</p>
+        <a class="btn gold" href="https://www.instagram.com/breakingbeersj/" target="_blank" rel="noopener">Ver la agenda</a>
+      </div>
+    </div>
   </section>
 
   <section class="sec" id="promos">
@@ -974,7 +1047,7 @@ litTargets.forEach(el=>{ centerObs.observe(el); appearObs.observe(el); });
 })();
 /* Cinta */
 (function(){
-  const t='Cervezas envasadas<b>·</b>Música en vivo<b>·</b>Hamburguesas<b>·</b>Pachatas<b>·</b>Pizzas<b>·</b>Tragos<b>·</b>Bar cultural<b>·</b>';
+  const t='Rock nacional en vivo<b>·</b>Cervezas envasadas<b>·</b>Bandas<b>·</b>Hamburguesas<b>·</b>Pachatas<b>·</b>Pizzas<b>·</b>Tragos<b>·</b>Bar cultural<b>·</b>';
   $('#ticker').innerHTML=`<span>${t}</span><span>${t}</span><span>${t}</span><span>${t}</span>`;
 })();
 
