@@ -6,12 +6,12 @@
 <meta name="theme-color" content="#12100e">
 <meta name="color-scheme" content="dark">
 <title>Breaking Beer · Carta</title>
-<meta name="description" content="Carta de Breaking Beer, el maldito bar cultural de San Juan: cervezas envasadas bien frías, promos, hamburguesas, pachatas, pizzas y tragos.">
+<meta name="description" content="Carta de Breaking Beer, el maldito bar cultural de San Juan: cervezas bien frías, promos, hamburguesas, pachatas, pizzas y tragos.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="Breaking Beer · Bar cultural">
 <meta property="og:title" content="Carta de Breaking Beer">
-<meta property="og:description" content="Rock nacional en vivo, cervezas envasadas bien frías, promos, hamburguesas, pachatas y pizzas. San Juan.">
+<meta property="og:description" content="Rock nacional en vivo, cervezas bien frías, promos, hamburguesas, pachatas y pizzas. San Juan.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232c7048'/%3E%3Ctext x='16' y='24' font-size='19' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%23f6efdc'%3EBr%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +69,8 @@ a,button,[data-open]{ touch-action:manipulation }
 .hero-bg img{ width:100%; height:100%; object-fit:cover; object-position:50% 38%; animation:kb 22s ease-in-out infinite alternate }
 @keyframes kb{ from{ transform:scale(1.04) } to{ transform:scale(1.16) } }
 .hero-bg img,.ubanner img,.foot-bg img{ filter:saturate(.45) sepia(.5) hue-rotate(-12deg) brightness(.95) contrast(1.05) }
+/* la portada conserva los colores del mural */
+.hero-bg img{ filter:saturate(.8) brightness(.92) contrast(1.05) }
 .hero-shade{ position:absolute; inset:0; z-index:-2; background:
    linear-gradient(180deg, rgba(18,16,14,.55) 0, rgba(18,16,14,.35) 38%, rgba(18,16,14,.86) 82%, var(--bg) 100%),
    radial-gradient(70% 55% at 50% 45%, rgba(18,16,14,.1), rgba(18,16,14,.55)) }
@@ -247,7 +249,7 @@ html.has-inset .nav-logo{ display:none }
 .pair b{ font-weight:700 }
 
 /* ───────────── Cervezas envasadas (la estrella de Breaking Beer) ───────────── */
-.bottles{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+.bottles{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px }
 .bt{ position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:5px; padding:20px 12px 16px; width:100%; border-radius:var(--r); overflow:hidden; isolation:isolate;
   background:linear-gradient(172deg, rgba(var(--bc),.2), rgba(26,23,20,.94) 72%);
   box-shadow:inset 0 0 0 1px rgba(var(--bc),.55), 0 10px 24px -14px rgba(0,0,0,.8); transition:transform .45s var(--press-out) }
@@ -266,6 +268,16 @@ html.has-inset .nav-logo{ display:none }
 .bt.hl .pr{ font-size:2.25rem }
 .bt .chip{ margin-bottom:2px }
 .bt:not(.hl) .bd{ display:flex; flex-direction:column; align-items:center; gap:4px }
+/* las 4 cervezas de abajo van siempre en una misma fila; en el celular se compactan */
+@media (max-width:759px){
+  .bottles{ gap:7px }
+  .bt:not(.hl){ padding:14px 4px 12px; gap:3px }
+  .bt:not(.hl) h3{ font-size:1.02rem; margin-top:2px; overflow-wrap:anywhere }
+  .bt:not(.hl) .ml{ font-size:.62rem }
+  .bt:not(.hl) p{ display:none }
+  .bt:not(.hl) .pr{ font-size:1.05rem }
+  .bt:not(.hl) .chip{ display:none }
+}
 .ubanner{ position:relative; height:190px; border-radius:var(--r); overflow:hidden; margin:2px 0 14px; isolation:isolate; box-shadow:inset 0 0 0 1px var(--line), 0 14px 30px -20px #000 }
 .ubanner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2 }
 .ubanner::after{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(0deg,rgba(18,16,14,.9) 0,rgba(18,16,14,.15) 60%) }
@@ -368,7 +380,7 @@ body.searching .fam{ display:block }
   .cols2{ grid-template-columns:1fr 1fr }
   .beers{ grid-template-columns:1fr 1fr }
   .banner{ height:260px }
-  .bottles{ grid-template-columns:repeat(3,1fr) }
+  .bottles{ grid-template-columns:repeat(4,1fr); gap:12px }
   .ubanner{ height:260px }
 }
 @media (min-width:900px){
@@ -475,7 +487,7 @@ body.searching .fam{ display:block }
 <div class="topband" aria-hidden="true"><span class="bb-mini"><b class="el"><i>35</i>Br</b><b class="el"><i>4</i>Be</b></span></div>
 
 <header class="hero" id="top">
-  <div class="hero-bg"><img src="img/bar.jpg" alt=""></div>
+  <div class="hero-bg"><img src="img/portada.jpg" alt=""></div>
   <div class="hero-shade"></div>
   <div class="hero-in">
     <div class="open-pill" id="openPill"><span class="dot"></span><span id="openTxt">Abierto de 21 a 04 hs</span></div>
@@ -486,7 +498,7 @@ body.searching .fam{ display:block }
     <p class="hero-tag"><span>El maldito · Bar cultural</span><span class="sep"> · </span><span>La excusa perfecta</span></p>
     <div class="stamp" aria-label="Rock nacional en vivo">Rock nacional<br>en vivo</div>
     <div class="hero-cta">
-      <a class="btn gold" href="#envasadas" data-go>Cervezas envasadas</a>
+      <a class="btn gold" href="#envasadas" data-go>Cervezas</a>
       <a class="btn glass" href="#promos" data-go>Ver promos</a>
     </div>
   </div>
@@ -502,7 +514,7 @@ body.searching .fam{ display:block }
   <div class="nav-in">
     <a href="#top" data-go aria-label="Volver arriba" class="bb-mini nav-logo"><b class="el"><i>35</i>Br</b><b class="el"><i>4</i>Be</b></a>
     <div class="chips" id="chips">
-      <a href="#envasadas" data-go>Envasadas</a>
+      <a href="#envasadas" data-go>Cervezas</a>
       <a href="#envivo" data-go>En vivo</a>
       <a href="#promos" data-go>Promos</a>
       <a href="#destacados" data-go>Especialidades</a>
@@ -525,7 +537,7 @@ body.searching .fam{ display:block }
 <main class="wrap" id="main">
 
   <section class="sec" id="envasadas">
-    <div class="sec-h rv"><h2>Cervezas envasadas</h2><div class="rule"></div></div>
+    <div class="sec-h rv"><h2>Cervezas</h2><div class="rule"></div></div>
     <p class="sec-sub rv">El corazón de Breaking Beer: botellones bien helados, de la heladera directo a tu mesa. Tocá una para verla de cerca.</p>
     <div class="ubanner rv"><img src="img/heladera.jpg" alt="" loading="lazy" decoding="async" style="object-position:62% 50%"><b>Siempre bien frías<small>Elegí tu botellón y compartilo con la mesa.</small></b></div>
     <div class="bottles" id="bottles"></div>
@@ -604,7 +616,6 @@ body.searching .fam{ display:block }
 
   <section class="sec" id="tragos">
     <div class="sec-h rv"><h2>Tragos</h2><div class="rule"></div></div>
-    <p class="sec-sub rv">Servidos en vaso de 500 ml. El Copón de Fernet, de 1.000 ml.</p>
     <div class="tabs rv" id="tragoTabs" role="tablist"></div>
     <div id="tragoPanels"></div>
   </section>
@@ -686,7 +697,7 @@ const BEERS=[
 
 const COMPARTIR_FOTOS=[
  {n:"Picada de la Casa", tag:"Ideal para compartir", img:"picada.jpg", pos:"40% 50%", p:"{{P:Picada Fiambre}}", d:"Salame, queso tybo y jamón cocido (180 g de cada uno), aceitunas, pan de campo, mayonesa casera y barbacoa. Para 2 o 3 personas.", pair:"Una Golden Ale"},
- {n:"Fritas Power", tag:"Nuevo", dark:1, img:"power.jpg", pos:"42% 62%", p:"{{P:Fritas Power}}", d:"Fritas, tiras de lomo, bacon, huevo frito y mayonesa de la casa. Un plato entero para compartir entre dos.", pair:"American IPA"}
+ {n:"Fritas Power", tag:"Nuevo", dark:1, img:"power.jpg", pos:"50% 78%", p:"{{P:Fritas Power}}", d:"Fritas, tiras de lomo, bacon, huevo frito y mayonesa de la casa. Un plato entero para compartir entre dos.", pair:"American IPA"}
 ];
 const FRITAS=[
  {n:"Fritas de la Casa", star:1, feat:1, p:"{{P:Fritas con Cheddar y Panceta}}", d:"Cheddar fundido y panceta ahumada."},
@@ -1048,7 +1059,7 @@ litTargets.forEach(el=>{ centerObs.observe(el); appearObs.observe(el); });
 })();
 /* Cinta */
 (function(){
-  const t='Rock nacional en vivo<b>·</b>Cervezas envasadas<b>·</b>Bandas<b>·</b>Hamburguesas<b>·</b>Pachatas<b>·</b>Pizzas<b>·</b>Tragos<b>·</b>Bar cultural<b>·</b>';
+  const t='Rock nacional en vivo<b>·</b>Cervezas<b>·</b>Bandas<b>·</b>Hamburguesas<b>·</b>Pachatas<b>·</b>Pizzas<b>·</b>Tragos<b>·</b>Bar cultural<b>·</b>';
   $('#ticker').innerHTML=`<span>${t}</span><span>${t}</span><span>${t}</span><span>${t}</span>`;
 })();
 
